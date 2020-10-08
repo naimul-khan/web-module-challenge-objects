@@ -13,8 +13,9 @@ The function should:
   2. Create and return an object using the received values  
 */
 
-function createMenuItem(/*Your code here*/){
+function createMenuItem(name, price, category){
     /*Your code here*/
+    return {name, price, category}
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -25,6 +26,10 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+
+console.log(createMenuItem("Chai Tea", 5, "Drinks"));
+console.log(createMenuItem("Cheeseburger", 3, "Lunch"));
+console.log(createMenuItem("Croissant", 1, "Breakfast"));
 
 
 
@@ -46,6 +51,19 @@ export const burger = {
   price: 18, 
   category: "Lunch", 
   /*Your code here*/
+
+  discount : function (str) { 
+        if(str === "teacher" || str === "student") 
+        { 
+          let discountPrice = this.price * (1-.25); 
+          return discountPrice;
+        } else if (str === "public") {
+          let discountPrice = this.price * (1-.10); 
+          return discountPrice;
+        } else { 
+          return this.price; 
+        }
+  }
 }
 
 
@@ -68,6 +86,13 @@ Using the reviews array above:
 */
 
 
+for(let i=0; i < reviews.length; i++)
+{   
+    if(reviews[i].name === "Julius")
+    {
+      console.log(reviews[i].feedback);
+    }
+}
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -76,6 +101,9 @@ Using the reviews array above do the following:
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
+// reviews.push({name: "John", rating: 5, feedback: "Amazing place. Love it"}); 
+
+// console.log(reviews); 
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -84,7 +112,14 @@ Reyna's feedback is missing! Use what you know to do the following:
   2. log the reviews array to the console to check your work
 */
 
+for(let i = 0; i < reviews.length; i++) { 
+  if(reviews[i].name === "Reyna")
+  { 
+    reviews[i].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+  }
+}
 
+console.log(reviews);
 
 
 
@@ -98,8 +133,10 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
+function getReviewByIndex(array, position) {
   /*Your code here*/
+  return reviews[position].name + " gave the restaurant a " + reviews[position].rating + 
+  " star review, and their feedback was: " + reviews[position].feedback;
 }
 
 
@@ -116,8 +153,11 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
+function getLastReview(array) {
   /*Your code here*/
+  let position = array.length - 1; 
+
+  return reviews[position].name + " gave the restaurant a " + reviews[position].rating + " star review, and their feedback was: " + reviews[position].feedback;
 } 
 
 
